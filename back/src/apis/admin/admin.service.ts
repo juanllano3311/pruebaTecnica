@@ -19,6 +19,11 @@ export class AdminService {
         return payload;
     }
 
+    async getAdminQ(email, password): Promise<any>{
+        const payload = await this.adminModel.findOne({},{email: email, password: password});
+        return payload;
+    }
+
     async createAdmin(adminDTO: AdminDTO): Promise<AdminInterface>{
         const payload =  new this.adminModel(adminDTO); 
         return await payload.save();

@@ -6,4 +6,7 @@ export const AdminSchema = new Schema({
 
     password: {type: String, required: true}
 
-},{ versionKey: false });
+},{ 
+    versionKey: false,
+    timestamps: true
+    });

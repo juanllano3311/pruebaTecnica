@@ -31,6 +31,13 @@ export class AdminController {
         return res.status(HttpStatus.OK).json([payload]);
     }
 
+    @Get('/search/:email/:password')
+    async getAdminQ(@Res() res, @Param('email') email, @Param('password') password){      
+        const payload = await this.adminService.getAdminQ(email, password);
+        if(!payload) throw new NotFoundException('No se encuentra');
+        return res.status(HttpStatus.OK).json([payload]);
+    }
+
     @Delete('/delete')
     async deleteAdmin(@Res() res, @Query('adminID') adminID){
         const payload = await this.adminService.deleteAdmin(adminID);
